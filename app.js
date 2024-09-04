@@ -30,6 +30,11 @@ function changeSign() {
 
 }
 
+function backspace() {
+
+}
+
+
 const operate = function (operand1, operand2, operator) {
     switch (operator) {
         case "+":
@@ -38,17 +43,20 @@ const operate = function (operand1, operand2, operator) {
         case "-":
             subtract(operand1, operand2);
             break;
-        case "x":
+        case "×":
             multiply(operand1, operand2);
             break;
         case "÷":
             divide(operand1, operand2);
             break;
         case "C":
-            clear()
+            clear();
             break;
-        case "-/+"
+        case "-/+":
             changeSign();
+            break;
+        case "⌦":
+            backspace();
             break;
         default:
             break;
