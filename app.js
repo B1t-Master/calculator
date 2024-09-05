@@ -24,7 +24,11 @@ function subtract(operand1, operand2) {
 }
 
 function clear() {
-
+    operand1 = "";
+    operand2 = "";
+    display.textContent = "";
+    operator = "";
+    operand1Pressed = false;
 }
 
 function changeSign() {
@@ -39,22 +43,19 @@ function backspace() {
 const operate = function (operand1, operand2, operator) {
     operand1 = +operand1;
     operand2 = +operand2;
-    let calculation;
+    let result;
     switch (operator) {
         case "plus":
-            calculation = add(operand1, operand2);
+            result = add(operand1, operand2);
             break;
         case "minus":
-            calculation = subtract(operand1, operand2);
+            result = subtract(operand1, operand2);
             break;
         case "multiplication":
-            calculation = multiply(operand1, operand2);
+            result = multiply(operand1, operand2);
             break;
         case "division":
-            calculation = divide(operand1, operand2);
-            break;
-        case "clear":
-            clear();
+            result = divide(operand1, operand2);
             break;
         case "change_sign":
             changeSign();
@@ -65,43 +66,61 @@ const operate = function (operand1, operand2, operator) {
         default:
             break;
     }
-    return calculation;
+    return result;
 }
 
 
 let operand1 = "";
-let operand2 = '';
+let operand2 = "";
 let operator;
 let inputLoop = false;
 let operatorPressed = false;
+let operand2Pressed = false;
+let operand1Pressed = false
 
 
 for (let i = 0; i < btns.length; i++) {
     btns[i].addEventListener('click', (e) => {
 
-        if (btn[i].className === "numeric" && (operatorPressed == false)) {
+        if (btns[i].className === "numeric" && (operatorPressed == false) && (operand1Pressed == false)) {
             display.textContent += `${btn[i].value}`;
             operand1 += btns[i].value;
         }
 
-        else if (btn[i].className === "operator" && (operatorPressed == false)) {
+        if (btns[i].className === "operator" && (operatorPressed == false)) {
             display.textContent = "";
             operator = btns[i].value;
             operatorPressed = true;
         }
 
-        else if (btn[i].className === "numeric" && (operatorPressed == true)) {
+        if (btns[i].className === "numeric" && (operatorPressed == true)) {
             display.textContent += `${btn[i].value}`;
             operand2 += btns[i].value;
+            operand2Pressed = true;
+            inputLoop = true;
         }
 
-        if (btn[i].value === "equals" && operatorPressed == true) {
-
-            display.textContent = operate(operand1, operand2, operator);
-            //display.textContent = `${operand1}`
+        if ((inputLoop == true) && btns[i].value === "equals") {
+            let calculation = operate(operand1, operand2, operator);
+            operand1 = calculation;
+            display.textContent = `${operand1}`
+            operand2Pressed = true;
             operatorPressed = false;
+            operand2 = "";
+            operand1Pressed = true;
+            inputLoop = false;
+            //operator = "";
+        }
+
+
+        if (btns[i].value === "clear") {
+            clear();
+            //display.textContent = `${operand1}`
             //operand2 = "";
         }
+
+
+
     });
 }
 

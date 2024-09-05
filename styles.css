@@ -50,8 +50,13 @@ section{
 .keypad{
     display:flex;
     flex-flow: wrap;
-    justify-content: space-around; 
+    justify-content: space-between;
+    padding: 6px;
 
+}
+
+button:hover{
+    opacity:0.75 ;
 }
 
 button{
