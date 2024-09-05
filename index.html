@@ -4,38 +4,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="/app.js" defer></script>
     <link rel="stylesheet" href="/styles.css">
-    <title>Document</title>
+    <title>Calulator</title>
+    <script src="/app.js" defer></script>
 </head>
 
 
 
 <body>
     <section class="wrapper">
-        <container class="display">
-            <div>21</div>
+        <container id="display">
+            <div class="screen"></div>
         </container>
         <container class="keypad">
-            <button>.</button>
-            <button>-/+</button>
-            <button>⌦</button>
-            <button style="color: aliceblue; background-color:rgb(45, 43, 43);">C</button>
-            <button style="color: black; background-color: lightgray;">7</button>
-            <button style="color: black; background-color: lightgray;">8</button>
-            <button style="color: black; background-color: lightgray;">9</button>
-            <button style="color: aliceblue; background-color:rgb(241, 52, 52);">-</button>
-            <button style="color: black; background-color: lightgray;">4</button>
-            <button style="color: black; background-color: lightgray;">5</button>
-            <button style="color: black; background-color: lightgray;">6</button>
-            <button style="color: aliceblue; background-color:greenyellow;">+</button>
-            <button style="color: black; background-color: lightgray;">1</button>
-            <button style="color: black; background-color: lightgray;">2</button>
-            <button style="color: black; background-color: lightgray;">3</button>
-            <button style="color: aliceblue; background-color: blue;">÷</button>
-            <button class="zero" style="color: black; background-color: lightgray;">0</button>
-            <button style="color: black; background-color:rgb(255, 255, 255);">=</button>
-            <button style="color: aliceblue; background-color:rgb(247, 219, 32);">×</button>
+            <button value="decimal">.</button>
+            <button class="operator" value="change_sign">-/+</button>
+            <button class="functionality" value="backspace">⌦</button>
+            <button class="functionality" value="clear"
+                style="color: aliceblue; background-color:rgb(45, 43, 43);">C</button>
+            <button class="numeric" value="7" style="color: black; background-color: lightgray;">7</button>
+            <button class="numeric" value="8" style="color: black; background-color: lightgray;">8</button>
+            <button class="numeric" value="9" style="color: black; background-color: lightgray;">9</button>
+            <button class="operator" value="minus"
+                style="color: aliceblue; background-color:rgb(241, 52, 52);">-</button>
+            <button class="numeric" value="4" style="color: black; background-color: lightgray;">4</button>
+            <button class="numeric" value="5" style="color: black; background-color: lightgray;">5</button>
+            <button class="numeric" value="6" style="color: black; background-color: lightgray;">6</button>
+            <button class="operator" value="plus" style="color: aliceblue; background-color:greenyellow;">+</button>
+            <button class="numeric" value="1" style="color: black; background-color: lightgray;">1</button>
+            <button class="numeric" value="2" style="color: black; background-color: lightgray;">2</button>
+            <button class="numeric" value="3" style="color: black; background-color: lightgray;">3</button>
+            <button class="operator" value="division" style="color: aliceblue; background-color: blue;">÷</button>
+            <button value="0" class="numeric" id="zero" style="color: black; background-color: lightgray;">0</button>
+            <button class="operator" value="equals"
+                style="color: black; background-color:rgb(255, 255, 255);">=</button>
+            <button class="operator" value="multiplication"
+                style="color: aliceblue; background-color:rgb(247, 219, 32);">×</button>
         </container>
 
 
