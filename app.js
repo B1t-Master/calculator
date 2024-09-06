@@ -2,13 +2,21 @@ let display = document.querySelector(".screen");
 let btn = document.querySelectorAll("button");
 let btns = Array.from(btn);
 
+function testLength(content) {
+    let arr = [...content];
+    if (arr.length > 12) {
+        return false
+    }
+    return true;
+}
+
 function add(operand1, operand2) {
     return operand1 + operand2;
 }
 
 function divide(operand1, operand2) {
     if (operand2 != 0) {
-        return operand1 / operand2;
+        return (operand1 / operand2).toFixed(2);
     }
     return "nice try 😉";
 }
@@ -76,15 +84,22 @@ let operator;
 let inputLoop = false;
 let operatorPressed = false;
 let operand2Pressed = false;
-let operand1Pressed = false
+let operand1Pressed = false;
 
 
 for (let i = 0; i < btns.length; i++) {
-    btns[i].addEventListener('click', (e) => {
+    //let storage = display.textContent;
+    btns[i].addEventListener('click', () => {
 
         if (btns[i].className === "numeric" && (operatorPressed == false) && (operand1Pressed == false)) {
-            display.textContent += `${btn[i].value}`;
-            operand1 += btns[i].value;
+            if (testLength(display.textContent)) {
+
+                display.textContent += `${btn[i].value}`;
+                operand1 += btns[i].value;
+            }
+            else {
+                display.textContent += ``;
+            }
         }
 
         if (btns[i].className === "operator" && (operatorPressed == false)) {
@@ -94,8 +109,16 @@ for (let i = 0; i < btns.length; i++) {
         }
 
         if (btns[i].className === "numeric" && (operatorPressed == true)) {
-            display.textContent += `${btn[i].value}`;
-            operand2 += btns[i].value;
+
+            if (testLength(display.textContent)) {
+
+                display.textContent += `${btn[i].value}`;
+                operand2 += btns[i].value;
+            }
+            else {
+                display.textContent += ``;
+            }
+
             operand2Pressed = true;
             inputLoop = true;
         }
@@ -112,14 +135,11 @@ for (let i = 0; i < btns.length; i++) {
             //operator = "";
         }
 
-
         if (btns[i].value === "clear") {
             clear();
             //display.textContent = `${operand1}`
             //operand2 = "";
         }
-
-
 
     });
 }
