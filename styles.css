@@ -1,4 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+@import url('https://fonts.cdnfonts.com/css/calculator');
+
+                
 
 html{
 margin: 0px;
@@ -8,9 +11,11 @@ box-sizing: border-box;
 
 }
 
-body div{
-    font-size: 32px;
-    font-family: "Press Start 2P", system-ui;
+.title{
+    font-size: 56px;
+    font-family: 'Calculator', sans-serif;
+    font-weight: 800;
+                                                
 }
 
 body{

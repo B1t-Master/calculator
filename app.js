@@ -129,9 +129,9 @@ for (let i = 0; i < btns.length; i++) {
         }
 
         if (btns[i].className === "operator" && (operatorPressed == false)) {
-            display.textContent = "";
             operator = btns[i].value;
             operatorPressed = true;
+            display.textContent = "";
         }
 
         if (btns[i].className === "numeric" && (operatorPressed == true)) {
