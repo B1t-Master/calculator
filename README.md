@@ -14,8 +14,11 @@ As the capstone of the TOP foundations project this project allowed me to demons
 
 ## Future things
 When I revisit this project I plan to add functionality to the decimal button aswell as Keyboard mapping allowing users to use the keyboard.
+Quality of life aspects may need to be made better such as animations when pressing a button and sound, possibly even a second display to hold working calculations
+
 > [!CAUTION]
 > There are also afew bugs one being: 
+
 when you divide by zero you have to hiy the clear button to go on 
 Also manipulating really big numbers the diplay cant fit all the values
 Such need to be ironed out 
