@@ -42,13 +42,46 @@ function clear() {
 }
 
 function changeSign() {
+    //numericals = "1234567890";
+    content = [...display.textContent];
+    if (content[0] === "+") {
+        content.splice(0, 1).unshift("-");
+    }
+    else if (content[0] === "-") {
+        content.splice(0, 1).unshift("+");
+    }
+    else {
+        content.unshift("-");
+    }
+    return display.textContent = `${content.join("")}`;
+}
 
+function carrOutChangeSign() {
+    if ((operand1Pressed == false) && (operand1Pressed == false)) {
+        changeSign();
+        return operand1 = display.textContent;
+    }
+    if (operatorPressed == true) {
+        changeSign();
+        return operand2 = display.textContent;
+    }
 }
 
 function backspace() {
     content = [...display.textContent];
     content.pop();
     return display.textContent = `${content.join("")}`;
+}
+
+function carrOutBackspace() {
+    if ((operand1Pressed == false) && (operand1Pressed == false)) {
+        backspace();
+        return operand1 = display.textContent;
+    }
+    if (operatorPressed == true) {
+        backspace();
+        return operand2 = display.textContent;
+    }
 }
 
 const operate = function (operand1, operand2, operator) {
@@ -67,9 +100,6 @@ const operate = function (operand1, operand2, operator) {
             break;
         case "division":
             result = divide(operand1, operand2);
-            break;
-        case "change_sign":
-            changeSign();
             break;
         default:
             break;
@@ -90,11 +120,8 @@ for (let i = 0; i < btns.length; i++) {
 
         if (btns[i].className === "numeric" && (operatorPressed == false) && (operand1Pressed == false)) {
             if (testLength(display.textContent)) {
-
                 display.textContent += `${btn[i].value}`;
                 operand1 = display.textContent;
-
-
             }
             else {
                 display.textContent += ``;
@@ -129,26 +156,19 @@ for (let i = 0; i < btns.length; i++) {
             operand2 = "";
             operand1Pressed = true;
             inputLoop = false;
-            //operator = "";
         }
 
         if (btns[i].value === "clear") {
             clear();
-            //display.textContent = `${operand1}`
-            //operand2 = "";
         }
 
         if (btns[i].value === "backspace") {
-            if ((operand1Pressed == false) && (operand1Pressed == false)) {
-                backspace();
-                operand1 = display.textContent;
-            }
-            if (operatorPressed == true) {
-                backspace();
-                operand2 = display.textContent;
-            }
+            carrOutBackspace();
         }
 
+        if (btns[i].value === "changeSign") {
+            carrOutChangeSign();
+        }
     });
 }
 
