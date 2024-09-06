@@ -18,9 +18,11 @@ function divide(operand1, operand2) {
     if (operand2 != 0) {
         return (operand1 / operand2).toFixed(2);
     }
-    return "nice try 😉";
-}
 
+    alert("Oops ,Press C to continue using calculator");
+    operatorPressed = true;
+    return display.textContent = "nice try 😉";
+}
 
 function multiply(operand1, operand2) {
     return operand1 * operand2;
@@ -44,9 +46,10 @@ function changeSign() {
 }
 
 function backspace() {
-
+    content = [...display.textContent];
+    content.pop();
+    return display.textContent = `${content.join("")}`;
 }
-
 
 const operate = function (operand1, operand2, operator) {
     operand1 = +operand1;
@@ -68,24 +71,18 @@ const operate = function (operand1, operand2, operator) {
         case "change_sign":
             changeSign();
             break;
-        case "backspace":
-            backspace();
-            break;
         default:
             break;
     }
     return result;
 }
 
-
 let operand1 = "";
 let operand2 = "";
 let operator;
 let inputLoop = false;
 let operatorPressed = false;
-let operand2Pressed = false;
 let operand1Pressed = false;
-
 
 for (let i = 0; i < btns.length; i++) {
     //let storage = display.textContent;
@@ -95,7 +92,9 @@ for (let i = 0; i < btns.length; i++) {
             if (testLength(display.textContent)) {
 
                 display.textContent += `${btn[i].value}`;
-                operand1 += btns[i].value;
+                operand1 = display.textContent;
+
+
             }
             else {
                 display.textContent += ``;
@@ -113,13 +112,12 @@ for (let i = 0; i < btns.length; i++) {
             if (testLength(display.textContent)) {
 
                 display.textContent += `${btn[i].value}`;
-                operand2 += btns[i].value;
+                operand2 = display.textContent;
             }
             else {
                 display.textContent += ``;
             }
 
-            operand2Pressed = true;
             inputLoop = true;
         }
 
@@ -127,7 +125,6 @@ for (let i = 0; i < btns.length; i++) {
             let calculation = operate(operand1, operand2, operator);
             operand1 = calculation;
             display.textContent = `${operand1}`
-            operand2Pressed = true;
             operatorPressed = false;
             operand2 = "";
             operand1Pressed = true;
@@ -139,6 +136,17 @@ for (let i = 0; i < btns.length; i++) {
             clear();
             //display.textContent = `${operand1}`
             //operand2 = "";
+        }
+
+        if (btns[i].value === "backspace") {
+            if ((operand1Pressed == false) && (operand1Pressed == false)) {
+                backspace();
+                operand1 = display.textContent;
+            }
+            if (operatorPressed == true) {
+                backspace();
+                operand2 = display.textContent;
+            }
         }
 
     });
